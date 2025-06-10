@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     parameters {
-        string(name: 'ECR_REPO_NAME', defaultValue: 'my-app', description: 'ECR repository name')
+        string(name: 'ECR_REPO_NAME', defaultValue: 'my-store-front', description: 'ECR repository name')
     }
 
     environment {
