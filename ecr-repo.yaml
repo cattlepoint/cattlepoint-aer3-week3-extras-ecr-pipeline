@@ -1,19 +1,31 @@
 AWSTemplateFormatVersion: "2010-09-09"
-Description: Simple template to create an ECR repository.
-
-Parameters:
-  RepositoryName:
-    Type: String
-    Description: Name of the ECR repository to create
-    Default: my-app
+Description: ECR repositories for the Cattlepoint stack
 
 Resources:
-  ECRRepo:
+  CattlepointDatabaseRepo:
     Type: AWS::ECR::Repository
     Properties:
-      RepositoryName: !Ref RepositoryName
+      RepositoryName: cattlepoint-database
+
+  CattlepointBackendRepo:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: cattlepoint-backend
+
+  CattlepointFrontendRepo:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: cattlepoint-frontend
 
 Outputs:
-  RepositoryUri:
-    Description: URI of the created ECR repository
-    Value: !GetAtt ECRRepo.RepositoryUri
+  DatabaseRepositoryUri:
+    Description: URI of the cattlepoint-database repository
+    Value: !GetAtt CattlepointDatabaseRepo.RepositoryUri
+
+  BackendRepositoryUri:
+    Description: URI of the cattlepoint-backend repository
+    Value: !GetAtt CattlepointBackendRepo.RepositoryUri
+
+  FrontendRepositoryUri:
+    Description: URI of the cattlepoint-frontend repository
+    Value: !GetAtt CattlepointFrontendRepo.RepositoryUri
